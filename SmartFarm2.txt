@@ -1,0 +1,281 @@
+[
+    {
+        "id": "e87e46b3e0ca3296",
+        "type": "tab",
+        "label": "SF_OP1_Cam Capture",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "99ae376f4433f7ce",
+        "type": "inject",
+        "z": "e87e46b3e0ca3296",
+        "name": "Debug-Image Capture",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 120,
+        "wires": [
+            [
+                "58cb398a5cf011cc"
+            ]
+        ]
+    },
+    {
+        "id": "58cb398a5cf011cc",
+        "type": "http request",
+        "z": "e87e46b3e0ca3296",
+        "name": "Image Capture Command",
+        "method": "GET",
+        "ret": "bin",
+        "paytoqs": "ignore",
+        "url": "http://192.168.0.15/capture",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 460,
+        "y": 120,
+        "wires": [
+            [
+                "d53dc33b95ec4a21",
+                "949b8c50b5e32d88"
+            ]
+        ]
+    },
+    {
+        "id": "d53dc33b95ec4a21",
+        "type": "base64",
+        "z": "e87e46b3e0ca3296",
+        "name": "",
+        "action": "",
+        "property": "payload",
+        "x": 700,
+        "y": 120,
+        "wires": [
+            [
+                "d6fa8b6cd7223e48",
+                "79e9df0b1899df88"
+            ]
+        ]
+    },
+    {
+        "id": "d6fa8b6cd7223e48",
+        "type": "template",
+        "z": "e87e46b3e0ca3296",
+        "name": "Img width Setting",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<img width=\"640px\" height=\"480px\" src=\"data:image/jpg;base64,{{{payload}}}\">",
+        "output": "str",
+        "x": 710,
+        "y": 380,
+        "wires": [
+            [
+                "90c92073202d4456"
+            ]
+        ]
+    },
+    {
+        "id": "90c92073202d4456",
+        "type": "ui_template",
+        "z": "e87e46b3e0ca3296",
+        "group": "b1d5cbd6.805608",
+        "name": "Capture Image",
+        "order": 3,
+        "width": 13,
+        "height": 10,
+        "format": "<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 720,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "79e9df0b1899df88",
+        "type": "image",
+        "z": "e87e46b3e0ca3296",
+        "name": "",
+        "width": 160,
+        "data": "payload",
+        "dataType": "msg",
+        "thumbnail": false,
+        "active": true,
+        "pass": false,
+        "outputs": 0,
+        "x": 800,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "bf3549d72c925fc4",
+        "type": "ui_button",
+        "z": "e87e46b3e0ca3296",
+        "name": "",
+        "group": "b1d5cbd6.805608",
+        "order": 20,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "label": "Camera Capture",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 180,
+        "y": 200,
+        "wires": [
+            [
+                "58cb398a5cf011cc"
+            ]
+        ]
+    },
+    {
+        "id": "1937821295a6e64a",
+        "type": "file",
+        "z": "e87e46b3e0ca3296",
+        "name": "",
+        "filename": "",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 430,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "949b8c50b5e32d88",
+        "type": "function",
+        "z": "e87e46b3e0ca3296",
+        "name": "",
+        "func": "var d = new Date();\nvar t = d.getTime();\nvar year = d.getFullYear();\nvar month = d.getMonth()+1; \nif(month.toString().length == 1) {\n    var month = '0'+month;\n}\nvar day = d.getDate();\nvar hour  = d.getHours();\nif(hour < 10) {\n    var hour = '0'+hour;\n}\nvar min = d.getMinutes();\nif(min < 10) {\n    var min = '0'+min;\n}\nvar sec = d.getSeconds();\nif(sec < 10) {\n    var sec = '0'+sec;\n}\nmsg.date = t;\nmsg.filename = \"C:/test_image/\"+year+month+day+hour+min+sec+\".jpg\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 240,
+        "y": 380,
+        "wires": [
+            [
+                "1937821295a6e64a",
+                "484852235193d7a9"
+            ]
+        ]
+    },
+    {
+        "id": "484852235193d7a9",
+        "type": "debug",
+        "z": "e87e46b3e0ca3296",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "filename",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 430,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "3a00a71b68848ff1",
+        "type": "ui_template",
+        "z": "e87e46b3e0ca3296",
+        "group": "b1d5cbd6.805608",
+        "name": "Strreaming Image",
+        "order": 1,
+        "width": 13,
+        "height": 10,
+        "format": "<div>\n    <img src=\"http://192.168.0.15:81/stream\" width=\"640px\">\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 190,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "aefddfc408e71a43",
+        "type": "ui_text",
+        "z": "e87e46b3e0ca3296",
+        "group": "b1d5cbd6.805608",
+        "order": 14,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "Live",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 210,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "24ad7ffd68b21715",
+        "type": "ui_text",
+        "z": "e87e46b3e0ca3296",
+        "group": "b1d5cbd6.805608",
+        "order": 16,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "Capture Image",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 420,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "b1d5cbd6.805608",
+        "type": "ui_group",
+        "name": "화상",
+        "tab": "eabe9ba8.3bb638",
+        "order": 1,
+        "disp": true,
+        "width": "27",
+        "collapse": false
+    },
+    {
+        "id": "eabe9ba8.3bb638",
+        "type": "ui_tab",
+        "name": "카메라",
+        "icon": "dashboard",
+        "order": 4,
+        "disabled": false,
+        "hidden": false
+    }
+]
