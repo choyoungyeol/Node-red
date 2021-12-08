@@ -1,0 +1,68 @@
+[
+    {
+        "id": "234f0703aa41e743",
+        "type": "tab",
+        "label": "플로우 4",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "992439cd5bd6780b",
+        "type": "fileinject",
+        "z": "234f0703aa41e743",
+        "name": "",
+        "x": 250,
+        "y": 200,
+        "wires": [
+            [
+                "652c7e8a833288f9",
+                "ec1af06a1ddd4e1e"
+            ]
+        ]
+    },
+    {
+        "id": "652c7e8a833288f9",
+        "type": "image",
+        "z": "234f0703aa41e743",
+        "name": "",
+        "width": 160,
+        "data": "payload",
+        "dataType": "msg",
+        "thumbnail": false,
+        "active": true,
+        "pass": false,
+        "outputs": 0,
+        "x": 500,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "404fe6405c23bed8",
+        "type": "debug",
+        "z": "234f0703aa41e743",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "ec1af06a1ddd4e1e",
+        "type": "cocossd",
+        "z": "234f0703aa41e743",
+        "name": "",
+        "x": 480,
+        "y": 200,
+        "wires": [
+            [
+                "404fe6405c23bed8"
+            ]
+        ]
+    }
+]
