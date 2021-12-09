@@ -1,0 +1,225 @@
+[
+    {
+        "id": "15e0fb4cc0df389f",
+        "type": "tab",
+        "label": "플로우 5",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "16bef45ec60baa21",
+        "type": "debug",
+        "z": "15e0fb4cc0df389f",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "d82b5d346f34203c",
+        "type": "ui_text",
+        "z": "15e0fb4cc0df389f",
+        "group": "a395612cbd988efc",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "AI 결과",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 720,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "2497a04d455fcdd5",
+        "type": "image",
+        "z": "15e0fb4cc0df389f",
+        "name": "",
+        "width": 160,
+        "data": "payload",
+        "dataType": "msg",
+        "thumbnail": false,
+        "active": true,
+        "pass": false,
+        "outputs": 0,
+        "x": 420,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "9ce113e257b283c6",
+        "type": "ui_webcam",
+        "z": "15e0fb4cc0df389f",
+        "name": "",
+        "group": "a395612cbd988efc",
+        "order": 1,
+        "width": 0,
+        "height": 5,
+        "countdown": false,
+        "autoStart": false,
+        "hideCaptureButton": false,
+        "showImage": "2",
+        "mirror": true,
+        "format": "jpeg",
+        "x": 160,
+        "y": 260,
+        "wires": [
+            [
+                "2497a04d455fcdd5",
+                "e539a9248f2435bf"
+            ]
+        ]
+    },
+    {
+        "id": "c80d933207232f3e",
+        "type": "function",
+        "z": "15e0fb4cc0df389f",
+        "name": "",
+        "func": "msg.payload = msg.payload[0].class;\nif(msg.payload == 'person'){\n    msg.payload = 'a';\n} \nelse {\n    msg.payload = 'b';\n}\nreturn [msg];\n\n//msg.payload[0].score",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 700,
+        "y": 340,
+        "wires": [
+            [
+                "34c6f3db7be73aba"
+            ]
+        ]
+    },
+    {
+        "id": "3c83ea6743c10a9c",
+        "type": "debug",
+        "z": "15e0fb4cc0df389f",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1030,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "34c6f3db7be73aba",
+        "type": "ui_switch",
+        "z": "15e0fb4cc0df389f",
+        "name": "",
+        "label": "작동",
+        "tooltip": "",
+        "group": "a395612cbd988efc",
+        "order": 3,
+        "width": 6,
+        "height": 1,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "payload",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "a",
+        "onvalueType": "str",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "b",
+        "offvalueType": "str",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 850,
+        "y": 340,
+        "wires": [
+            [
+                "3c83ea6743c10a9c",
+                "89eb47ff655d8332"
+            ]
+        ]
+    },
+    {
+        "id": "89eb47ff655d8332",
+        "type": "serial out",
+        "z": "15e0fb4cc0df389f",
+        "name": "",
+        "serial": "0ea2fcaaccbfa388",
+        "x": 1020,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "e539a9248f2435bf",
+        "type": "teachable machine",
+        "z": "15e0fb4cc0df389f",
+        "name": "",
+        "mode": "online",
+        "modelUrl": "https://teachablemachine.withgoogle.com/models/4dOTB6syd/",
+        "localModel": "teachable_model",
+        "output": "best",
+        "activeThreshold": false,
+        "threshold": 80,
+        "activeMaxResults": false,
+        "maxResults": 3,
+        "passThrough": false,
+        "x": 450,
+        "y": 340,
+        "wires": [
+            [
+                "16bef45ec60baa21",
+                "c80d933207232f3e",
+                "d82b5d346f34203c"
+            ]
+        ]
+    },
+    {
+        "id": "a395612cbd988efc",
+        "type": "ui_group",
+        "name": "AI_TM",
+        "tab": "165e91299a6865ad",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "0ea2fcaaccbfa388",
+        "type": "serial-port",
+        "serialport": "COM24",
+        "serialbaud": "9600",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "165e91299a6865ad",
+        "type": "ui_tab",
+        "name": "AI",
+        "icon": "dashboard",
+        "order": 5,
+        "disabled": false,
+        "hidden": false
+    }
+]
