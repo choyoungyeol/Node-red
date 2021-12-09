@@ -8,4 +8,4 @@ Node-red Program
 
 
 인공지능 - 사물인식 Teachable machine (AI2.json)
-![그림1](https://user-images.githubusercontent.com/60500365/145321748-86d5c1b9-1d11-4f1a-b76c-f6516633b91d.png)
+![그림2](https://user-images.githubusercontent.com/60500365/145321881-5cb6cd89-9d81-4fc4-9a94-28abce071825.png)
