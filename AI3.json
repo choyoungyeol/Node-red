@@ -1,15 +1,15 @@
 [
     {
-        "id": "27a2271c0394b2cd",
+        "id": "e217624fb46e4db9",
         "type": "tab",
-        "label": "플로우 3",
+        "label": "플로우 7",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "854774ef646036e2",
+        "id": "9b19573449510581",
         "type": "inject",
-        "z": "27a2271c0394b2cd",
+        "z": "e217624fb46e4db9",
         "name": "Debug-Image Capture",
         "props": [
             {
@@ -26,56 +26,56 @@
         "onceDelay": 0.1,
         "topic": "",
         "payloadType": "date",
-        "x": 360,
-        "y": 200,
+        "x": 280,
+        "y": 140,
         "wires": [
             [
-                "bc539c400d148d0a"
+                "adeac5f40d2266d8"
             ]
         ]
     },
     {
-        "id": "bc539c400d148d0a",
+        "id": "adeac5f40d2266d8",
         "type": "http request",
-        "z": "27a2271c0394b2cd",
+        "z": "e217624fb46e4db9",
         "name": "Image Capture Command",
         "method": "GET",
         "ret": "bin",
         "paytoqs": "ignore",
-        "url": "http://192.168.0.19/capture",
+        "url": "http://192.168.0.20/capture",
         "tls": "",
         "persist": false,
         "proxy": "",
         "authType": "",
-        "x": 630,
-        "y": 200,
+        "x": 550,
+        "y": 140,
         "wires": [
             [
-                "c5d25243e2b4520e",
-                "d5b70d81929ab75b"
+                "696b84e9a5afc50f",
+                "95dc8c5fc628527b"
             ]
         ]
     },
     {
-        "id": "c5d25243e2b4520e",
+        "id": "696b84e9a5afc50f",
         "type": "base64",
-        "z": "27a2271c0394b2cd",
+        "z": "e217624fb46e4db9",
         "name": "",
         "action": "",
         "property": "payload",
-        "x": 870,
-        "y": 200,
+        "x": 790,
+        "y": 140,
         "wires": [
             [
-                "5f4e0ec6039d8825",
-                "42a2504bba9350ac"
+                "e11244a99310a41d",
+                "9ef90d3a0658b25a"
             ]
         ]
     },
     {
-        "id": "5f4e0ec6039d8825",
+        "id": "e11244a99310a41d",
         "type": "template",
-        "z": "27a2271c0394b2cd",
+        "z": "e217624fb46e4db9",
         "name": "Img width Setting",
         "field": "payload",
         "fieldType": "msg",
@@ -83,18 +83,18 @@
         "syntax": "mustache",
         "template": "<img width=\"640px\" height=\"480px\" src=\"data:image/jpg;base64,{{{payload}}}\">",
         "output": "str",
-        "x": 883.9999923706055,
-        "y": 272.99997901916504,
+        "x": 803.9999923706055,
+        "y": 212.99997901916504,
         "wires": [
             [
-                "5a1b7fd3b8ccaa7f"
+                "ad80b45d33b2dad6"
             ]
         ]
     },
     {
-        "id": "42a2504bba9350ac",
+        "id": "9ef90d3a0658b25a",
         "type": "image",
-        "z": "27a2271c0394b2cd",
+        "z": "e217624fb46e4db9",
         "name": "",
         "width": 160,
         "data": "payload",
@@ -103,32 +103,32 @@
         "active": true,
         "pass": false,
         "outputs": 0,
-        "x": 1143.9999885559082,
-        "y": 203.99998474121094,
+        "x": 1160,
+        "y": 140,
         "wires": []
     },
     {
-        "id": "76b1596a484dba06",
+        "id": "0eabf3285539e4e9",
         "type": "file",
-        "z": "27a2271c0394b2cd",
+        "z": "e217624fb46e4db9",
         "name": "",
         "filename": "",
         "appendNewline": true,
         "createDir": true,
         "overwriteFile": "true",
         "encoding": "none",
-        "x": 614,
-        "y": 383.99997997283936,
+        "x": 534,
+        "y": 323.99997997283936,
         "wires": [
             [
-                "be3697e493fade51"
+                "cd7fa8710189781a"
             ]
         ]
     },
     {
-        "id": "d5b70d81929ab75b",
+        "id": "95dc8c5fc628527b",
         "type": "function",
-        "z": "27a2271c0394b2cd",
+        "z": "e217624fb46e4db9",
         "name": "",
         "func": "msg.filename = \"D:/Data/test_image/Test.jpg\";\nreturn msg;",
         "outputs": 1,
@@ -136,19 +136,19 @@
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 389.99999237060547,
-        "y": 380.99997901916504,
+        "x": 309.99999237060547,
+        "y": 320.99997901916504,
         "wires": [
             [
-                "76b1596a484dba06",
-                "6b7d3290fcdf7867"
+                "0eabf3285539e4e9",
+                "fb7f5dcf3070ccac"
             ]
         ]
     },
     {
-        "id": "6b7d3290fcdf7867",
+        "id": "fb7f5dcf3070ccac",
         "type": "debug",
-        "z": "27a2271c0394b2cd",
+        "z": "e217624fb46e4db9",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -158,37 +158,37 @@
         "targetType": "msg",
         "statusVal": "",
         "statusType": "auto",
-        "x": 616,
-        "y": 448.9999723434448,
+        "x": 536,
+        "y": 388.9999723434448,
         "wires": []
     },
     {
-        "id": "6a6b8d9b9b51670c",
+        "id": "9a1dd2ab6e696191",
         "type": "ui_template",
-        "z": "27a2271c0394b2cd",
-        "group": "5f60c7c83d14eb76",
+        "z": "e217624fb46e4db9",
+        "group": "76a94514ec0826ee",
         "name": "Strreaming Image",
         "order": 1,
         "width": 13,
         "height": 10,
-        "format": "<div>\n    <img src=\"http://192.168.0.19:81/stream\" width=\"640px\">\n</div>",
+        "format": "<div>\n    <img src=\"http://192.168.0.20:81/stream\" width=\"640px\">\n</div>",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 360,
-        "y": 140,
+        "x": 280,
+        "y": 80,
         "wires": [
             []
         ]
     },
     {
-        "id": "38bb8e54afe7052d",
+        "id": "6c50ed2ceb3a7f44",
         "type": "ui_text",
-        "z": "27a2271c0394b2cd",
-        "group": "5f60c7c83d14eb76",
-        "order": 15,
+        "z": "e217624fb46e4db9",
+        "group": "76a94514ec0826ee",
+        "order": 5,
         "width": 6,
         "height": 1,
         "name": "",
@@ -196,63 +196,16 @@
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "className": "",
-        "x": 627,
-        "y": 518.9999675750732,
+        "x": 547,
+        "y": 458.99996757507324,
         "wires": []
     },
     {
-        "id": "be3697e493fade51",
-        "type": "cocossd",
-        "z": "27a2271c0394b2cd",
-        "name": "",
-        "x": 860,
-        "y": 400,
-        "wires": [
-            [
-                "ec57165c64963163",
-                "fc8878c6848757dd"
-            ]
-        ]
-    },
-    {
-        "id": "ec57165c64963163",
+        "id": "018e323f4ba75568",
         "type": "ui_text",
-        "z": "27a2271c0394b2cd",
-        "group": "5f60c7c83d14eb76",
-        "order": 16,
-        "width": 6,
-        "height": 1,
-        "name": "",
-        "label": "AI 결과",
-        "format": "{{msg.payload}}",
-        "layout": "row-spread",
-        "className": "",
-        "x": 1060,
-        "y": 400,
-        "wires": []
-    },
-    {
-        "id": "fc8878c6848757dd",
-        "type": "debug",
-        "z": "27a2271c0394b2cd",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1070,
-        "y": 460,
-        "wires": []
-    },
-    {
-        "id": "5cf2710cdec439b6",
-        "type": "ui_text",
-        "z": "27a2271c0394b2cd",
-        "group": "5f60c7c83d14eb76",
-        "order": 13,
+        "z": "e217624fb46e4db9",
+        "group": "76a94514ec0826ee",
+        "order": 3,
         "width": 6,
         "height": 1,
         "name": "",
@@ -260,17 +213,17 @@
         "format": "{{msg.payload}}",
         "layout": "row-spread",
         "className": "",
-        "x": 330,
-        "y": 520,
+        "x": 250,
+        "y": 460,
         "wires": []
     },
     {
-        "id": "2977a1ba839bff4a",
+        "id": "ad524e7725ddbf81",
         "type": "ui_button",
-        "z": "27a2271c0394b2cd",
+        "z": "e217624fb46e4db9",
         "name": "",
-        "group": "5f60c7c83d14eb76",
-        "order": 19,
+        "group": "76a94514ec0826ee",
+        "order": 9,
         "width": 6,
         "height": 1,
         "passthru": false,
@@ -284,21 +237,21 @@
         "payloadType": "str",
         "topic": "",
         "topicType": "str",
-        "x": 320,
-        "y": 260,
+        "x": 240,
+        "y": 200,
         "wires": [
             [
-                "bc539c400d148d0a"
+                "adeac5f40d2266d8"
             ]
         ]
     },
     {
-        "id": "5a1b7fd3b8ccaa7f",
+        "id": "ad80b45d33b2dad6",
         "type": "ui_template",
-        "z": "27a2271c0394b2cd",
-        "group": "5f60c7c83d14eb76",
+        "z": "e217624fb46e4db9",
+        "group": "76a94514ec0826ee",
         "name": "Capture Image",
-        "order": 3,
+        "order": 2,
         "width": 13,
         "height": 10,
         "format": "<div ng-bind-html=\"msg.payload\"></div>",
@@ -307,209 +260,116 @@
         "resendOnRefresh": true,
         "templateScope": "local",
         "className": "",
-        "x": 880,
-        "y": 340,
+        "x": 800,
+        "y": 280,
         "wires": [
             []
         ]
     },
     {
-        "id": "9f5ba15b2e356946",
+        "id": "50943d835dbca50f",
+        "type": "debug",
+        "z": "e217624fb46e4db9",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 950,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "cd7fa8710189781a",
+        "type": "cocossd",
+        "z": "e217624fb46e4db9",
+        "name": "",
+        "x": 780,
+        "y": 360,
+        "wires": [
+            [
+                "50943d835dbca50f",
+                "7c31b68dd62b482b"
+            ]
+        ]
+    },
+    {
+        "id": "7c31b68dd62b482b",
+        "type": "ui_text",
+        "z": "e217624fb46e4db9",
+        "group": "76a94514ec0826ee",
+        "order": 7,
+        "width": 6,
+        "height": 1,
+        "name": "",
+        "label": "AI 결과",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 960,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "c8dab58f8c4a8c76",
         "type": "ui_spacer",
-        "z": "27a2271c0394b2cd",
+        "z": "e217624fb46e4db9",
         "name": "spacer",
-        "group": "b1d5cbd6.805608",
+        "group": "76a94514ec0826ee",
         "order": 4,
         "width": 7,
         "height": 1
     },
     {
-        "id": "3930c83bb31cc651",
+        "id": "b6cf52726ed94f0c",
         "type": "ui_spacer",
-        "z": "27a2271c0394b2cd",
+        "z": "e217624fb46e4db9",
         "name": "spacer",
-        "group": "b1d5cbd6.805608",
-        "order": 7,
-        "width": 13,
-        "height": 1
-    },
-    {
-        "id": "29f6635a7aa320a9",
-        "type": "ui_spacer",
-        "z": "27a2271c0394b2cd",
-        "name": "spacer",
-        "group": "b1d5cbd6.805608",
-        "order": 9,
-        "width": "7",
-        "height": "1",
-        "className": ""
-    },
-    {
-        "id": "cf896ed9c7c12126",
-        "type": "ui_spacer",
-        "z": "27a2271c0394b2cd",
-        "name": "spacer",
-        "group": "5f60c7c83d14eb76",
-        "order": 2,
-        "width": 1,
-        "height": 1
-    },
-    {
-        "id": "e4fd5d1337ad7707",
-        "type": "ui_spacer",
-        "z": "27a2271c0394b2cd",
-        "name": "spacer",
-        "group": "5f60c7c83d14eb76",
-        "order": 4,
-        "width": 1,
-        "height": 1
-    },
-    {
-        "id": "93322b6455b87980",
-        "type": "ui_spacer",
-        "z": "27a2271c0394b2cd",
-        "name": "spacer",
-        "group": "5f60c7c83d14eb76",
-        "order": 5,
-        "width": 1,
-        "height": 1
-    },
-    {
-        "id": "7b8b8a1f1d572279",
-        "type": "ui_spacer",
-        "z": "27a2271c0394b2cd",
-        "name": "spacer",
-        "group": "5f60c7c83d14eb76",
+        "group": "76a94514ec0826ee",
         "order": 6,
         "width": 1,
         "height": 1
     },
     {
-        "id": "7974cdda09d08917",
+        "id": "2418ea21c9585168",
         "type": "ui_spacer",
-        "z": "27a2271c0394b2cd",
+        "z": "e217624fb46e4db9",
         "name": "spacer",
-        "group": "5f60c7c83d14eb76",
-        "order": 7,
-        "width": 1,
-        "height": 1
-    },
-    {
-        "id": "32c06d92312c9f4e",
-        "type": "ui_spacer",
-        "z": "27a2271c0394b2cd",
-        "name": "spacer",
-        "group": "5f60c7c83d14eb76",
+        "group": "76a94514ec0826ee",
         "order": 8,
-        "width": 1,
+        "width": 13,
         "height": 1
     },
     {
-        "id": "1c22e41a9bc92964",
+        "id": "a163cfb71aed25bc",
         "type": "ui_spacer",
-        "z": "27a2271c0394b2cd",
+        "z": "e217624fb46e4db9",
         "name": "spacer",
-        "group": "5f60c7c83d14eb76",
-        "order": 9,
-        "width": 1,
-        "height": 1
-    },
-    {
-        "id": "ec2a8c3d6e8768f9",
-        "type": "ui_spacer",
-        "z": "27a2271c0394b2cd",
-        "name": "spacer",
-        "group": "5f60c7c83d14eb76",
+        "group": "76a94514ec0826ee",
         "order": 10,
-        "width": 1,
-        "height": 1
-    },
-    {
-        "id": "5d2d1f3726e6f230",
-        "type": "ui_spacer",
-        "z": "27a2271c0394b2cd",
-        "name": "spacer",
-        "group": "5f60c7c83d14eb76",
-        "order": 11,
-        "width": 1,
-        "height": 1
-    },
-    {
-        "id": "6cfaa33b331491ff",
-        "type": "ui_spacer",
-        "z": "27a2271c0394b2cd",
-        "name": "spacer",
-        "group": "5f60c7c83d14eb76",
-        "order": 12,
-        "width": 1,
-        "height": 1
-    },
-    {
-        "id": "7f62d34d3b283812",
-        "type": "ui_spacer",
-        "z": "27a2271c0394b2cd",
-        "name": "spacer",
-        "group": "5f60c7c83d14eb76",
-        "order": 14,
-        "width": 8,
-        "height": 1
-    },
-    {
-        "id": "0f6c0268a44cba58",
-        "type": "ui_spacer",
-        "z": "27a2271c0394b2cd",
-        "name": "spacer",
-        "group": "5f60c7c83d14eb76",
-        "order": 17,
-        "width": 1,
-        "height": 1
-    },
-    {
-        "id": "f4804447a5c6464c",
-        "type": "ui_spacer",
-        "z": "27a2271c0394b2cd",
-        "name": "spacer",
-        "group": "5f60c7c83d14eb76",
-        "order": 18,
-        "width": 14,
-        "height": 1
-    },
-    {
-        "id": "1f451d45d8c576f4",
-        "type": "ui_spacer",
-        "z": "27a2271c0394b2cd",
-        "name": "spacer",
-        "group": "5f60c7c83d14eb76",
-        "order": 20,
         "width": 7,
         "height": 1
     },
     {
-        "id": "5f60c7c83d14eb76",
+        "id": "76a94514ec0826ee",
         "type": "ui_group",
-        "name": "Camera",
-        "tab": "fac4adcc.be33b",
+        "name": "ESP32Cam",
+        "tab": "f0a7f7bdd66905b2",
         "order": 1,
         "disp": true,
-        "width": 27,
+        "width": 26,
         "collapse": false,
         "className": ""
     },
     {
-        "id": "b1d5cbd6.805608",
-        "type": "ui_group",
-        "name": "Cam Capture",
-        "tab": "",
-        "order": 1,
-        "disp": true,
-        "width": 27,
-        "collapse": false
-    },
-    {
-        "id": "fac4adcc.be33b",
+        "id": "f0a7f7bdd66905b2",
         "type": "ui_tab",
-        "name": "AI",
+        "name": "Camera",
         "icon": "dashboard",
+        "order": 6,
         "disabled": false,
         "hidden": false
     }
