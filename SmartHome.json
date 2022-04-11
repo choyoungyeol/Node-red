@@ -1,0 +1,285 @@
+[
+    {
+        "id": "3bcac8835da98423",
+        "type": "tab",
+        "label": "플로우 2",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "190c058d17d2c22c",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "b77ded9d1d746205",
+        "type": "ui_group",
+        "name": "Group 1",
+        "tab": "190c058d17d2c22c",
+        "order": 1,
+        "disp": true,
+        "width": 12
+    },
+    {
+        "id": "f87854bb0424272f",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "90c2d770290e3da8",
+        "type": "serial-port",
+        "serialport": "COM32",
+        "serialbaud": "9600",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "61c107f6359d5602",
+        "type": "function",
+        "z": "3bcac8835da98423",
+        "name": "",
+        "func": "var output = msg.payload.split(\",\");\nvar temp = parseFloat(output[0]);\nvar msg = {payload:temp};\nreturn [msg];\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 260,
+        "wires": [
+            [
+                "c7b9d7681f880626"
+            ]
+        ]
+    },
+    {
+        "id": "77ba457cb0a2d959",
+        "type": "function",
+        "z": "3bcac8835da98423",
+        "name": "",
+        "func": "var output = msg.payload.split(\",\");\nvar RH = parseFloat(output[1]);\nvar msg = {payload:RH};\nreturn [msg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 311.28407287597656,
+        "y": 438.82669830322266,
+        "wires": [
+            [
+                "f503bba010e93ce3"
+            ]
+        ]
+    },
+    {
+        "id": "c7b9d7681f880626",
+        "type": "ui_gauge",
+        "z": "3bcac8835da98423",
+        "name": "",
+        "group": "b77ded9d1d746205",
+        "order": 1,
+        "width": 6,
+        "height": 5,
+        "gtype": "donut",
+        "title": "Temperature",
+        "label": "oC",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 490,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "f503bba010e93ce3",
+        "type": "ui_gauge",
+        "z": "3bcac8835da98423",
+        "name": "",
+        "group": "b77ded9d1d746205",
+        "order": 2,
+        "width": 6,
+        "height": 5,
+        "gtype": "wave",
+        "title": "Humidity",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 484.2869300842285,
+        "y": 439.65621185302734,
+        "wires": []
+    },
+    {
+        "id": "e53845c015727550",
+        "type": "serial in",
+        "z": "3bcac8835da98423",
+        "name": "",
+        "serial": "90c2d770290e3da8",
+        "x": 117.28691101074219,
+        "y": 315.678955078125,
+        "wires": [
+            [
+                "61c107f6359d5602",
+                "77ba457cb0a2d959"
+            ]
+        ]
+    },
+    {
+        "id": "452121a6826f2bfb",
+        "type": "ui_slider",
+        "z": "3bcac8835da98423",
+        "name": "",
+        "label": "Light",
+        "tooltip": "",
+        "group": "b77ded9d1d746205",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "end",
+        "topic": "",
+        "topicType": "str",
+        "min": "1",
+        "max": "8",
+        "step": 1,
+        "className": "",
+        "x": 650,
+        "y": 360,
+        "wires": [
+            [
+                "8c63c2bd17623a8d"
+            ]
+        ]
+    },
+    {
+        "id": "8c63c2bd17623a8d",
+        "type": "serial out",
+        "z": "3bcac8835da98423",
+        "name": "",
+        "serial": "90c2d770290e3da8",
+        "x": 820,
+        "y": 360,
+        "wires": []
+    }
+]
