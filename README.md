@@ -14,7 +14,7 @@ Node-red Program
 ![그림1](https://user-images.githubusercontent.com/60500365/145772771-589ba907-0161-4b23-95b4-db39b98a8d83.png)
 
 
-스마트홈.txt
+스마트홈 (SmartHome.ino, SmartHome.json)
 
 ![image](https://user-images.githubusercontent.com/60500365/162844179-0901d347-2d07-46d7-a912-6d05b3d350dc.png)
 ![image](https://user-images.githubusercontent.com/60500365/162844212-170c6957-a463-4951-911e-c648a67f84a5.png)
