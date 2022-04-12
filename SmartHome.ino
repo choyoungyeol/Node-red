@@ -16,7 +16,9 @@ Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 DHT dht(DHTPIN, DHTTYPE);
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 Servo myservo;
-SoftwareSerial Bluetooth(5, 4);
+SoftwareSerial Bluetooth(0, 1);
+
+String readString;
 
 void setup() {
   Serial.begin(9600);
@@ -37,10 +39,6 @@ void setup() {
 void loop() {
   int humi = dht.readHumidity();
   int temp = dht.readTemperature();
-  Serial.print(temp);
-  Serial.print(", ");
-  Serial.println(humi);
-  delay(2000);
 
   lcd.clear();
   lcd.setCursor(0, 0);
@@ -198,4 +196,15 @@ void loop() {
       pixels.show();
     }
   }
+
+  readString = "";
+  String data = String(temp) + ", " + String(humi) + ",";
+  Serial.println(data);
+
+  while (Serial.available()) {
+    delay(3);
+    char c = Serial.read();
+    readString += c;
+  }
+  delay(2000);
 }
