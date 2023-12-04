@@ -1,0 +1,10 @@
+sudo apt install curl
+sudo apt install nodejs
+sudo apt install npm
+
+sudo apt update
+sudo apt upgrade
+
+sudo npm install -g --unsafe-perm node-red
+
+node-red
