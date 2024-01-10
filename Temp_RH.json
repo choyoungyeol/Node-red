@@ -1,0 +1,234 @@
+[
+    {
+        "id": "a0eb7a130bdb25e7",
+        "type": "serial in",
+        "z": "3d9b33174b55e8a8",
+        "name": "",
+        "serial": "0ea2fcaaccbfa388",
+        "x": 190,
+        "y": 200,
+        "wires": [
+            [
+                "56710ee0112ccddc",
+                "3474dad24acd3cae"
+            ]
+        ]
+    },
+    {
+        "id": "56710ee0112ccddc",
+        "type": "function",
+        "z": "3d9b33174b55e8a8",
+        "name": "",
+        "func": "var output = msg.payload.split(\",\");\nvar temp = parseFloat(output[0]);\nvar msg = {payload:temp};\nreturn [msg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 180,
+        "wires": [
+            [
+                "e7265c1477569d47",
+                "b07b9ff2e0527bcd"
+            ]
+        ]
+    },
+    {
+        "id": "3474dad24acd3cae",
+        "type": "function",
+        "z": "3d9b33174b55e8a8",
+        "name": "",
+        "func": "var output = msg.payload.split(\",\");\nvar humi = parseFloat(output[1]);\nvar msg = {payload:humi};\nreturn [msg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 490,
+        "y": 280,
+        "wires": [
+            [
+                "7be2f9bd9bcdf55f",
+                "b6e373560424d04f"
+            ]
+        ]
+    },
+    {
+        "id": "e7265c1477569d47",
+        "type": "ui_gauge",
+        "z": "3d9b33174b55e8a8",
+        "name": "",
+        "group": "1e67f04f636fb056",
+        "order": 1,
+        "width": 10,
+        "height": 6,
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 730,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "7be2f9bd9bcdf55f",
+        "type": "ui_gauge",
+        "z": "3d9b33174b55e8a8",
+        "name": "",
+        "group": "1e67f04f636fb056",
+        "order": 3,
+        "width": 10,
+        "height": 6,
+        "gtype": "gage",
+        "title": "Humidity",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 740,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "b07b9ff2e0527bcd",
+        "type": "ui_chart",
+        "z": "3d9b33174b55e8a8",
+        "name": "",
+        "group": "1e67f04f636fb056",
+        "order": 9,
+        "width": 10,
+        "height": 6,
+        "label": "Temp",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 740,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b6e373560424d04f",
+        "type": "ui_chart",
+        "z": "3d9b33174b55e8a8",
+        "name": "",
+        "group": "1e67f04f636fb056",
+        "order": 11,
+        "width": 10,
+        "height": 6,
+        "label": "Humi",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 760,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0ea2fcaaccbfa388",
+        "type": "serial-port",
+        "serialport": "COM18",
+        "serialbaud": "9600",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "1e67f04f636fb056",
+        "type": "ui_group",
+        "name": "Group 1",
+        "tab": "2482fbe9f4384915",
+        "order": 1,
+        "disp": true,
+        "width": 26
+    },
+    {
+        "id": "2482fbe9f4384915",
+        "type": "ui_tab",
+        "name": "Tab 3",
+        "icon": "dashboard",
+        "order": 3
+    }
+]
