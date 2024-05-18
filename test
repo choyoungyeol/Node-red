@@ -1,0 +1,313 @@
+[
+    {
+        "id": "ac14a8b273914185",
+        "type": "tab",
+        "label": "플로우 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "3343ff48c14793f9",
+        "type": "ui_switch",
+        "z": "ac14a8b273914185",
+        "name": "",
+        "label": "switch",
+        "tooltip": "",
+        "group": "2738c935a6342b95",
+        "order": 1,
+        "width": 12,
+        "height": 1,
+        "passthru": false,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "a",
+        "onvalueType": "str",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "b",
+        "offvalueType": "str",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 1130,
+        "y": 220,
+        "wires": [
+            [
+                "269dc592f49786c8"
+            ]
+        ]
+    },
+    {
+        "id": "269dc592f49786c8",
+        "type": "serial out",
+        "z": "ac14a8b273914185",
+        "name": "",
+        "serial": "0ea2fcaaccbfa388",
+        "x": 1280,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "6875d8588d1f7ea3",
+        "type": "serial in",
+        "z": "ac14a8b273914185",
+        "name": "",
+        "serial": "0ea2fcaaccbfa388",
+        "x": 310,
+        "y": 220,
+        "wires": [
+            [
+                "3e54937b2e96b03c",
+                "a0d1b364e27a47ab",
+                "adbe200a4813c143"
+            ]
+        ]
+    },
+    {
+        "id": "3e54937b2e96b03c",
+        "type": "function",
+        "z": "ac14a8b273914185",
+        "name": "",
+        "func": "var output = msg.payload.split(\",\");\nvar RH = parseFloat(output[0]);\nvar msg = {payload:RH};\nreturn [msg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 220,
+        "wires": [
+            [
+                "f35692985de8eba6",
+                "1ff0621ae3348461"
+            ]
+        ]
+    },
+    {
+        "id": "f35692985de8eba6",
+        "type": "ui_gauge",
+        "z": "ac14a8b273914185",
+        "name": "",
+        "group": "2738c935a6342b95",
+        "order": 3,
+        "width": 12,
+        "height": 7,
+        "gtype": "wave",
+        "title": "습도",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 790,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "1e8aa20eba5d5f67",
+        "type": "ui_gauge",
+        "z": "ac14a8b273914185",
+        "name": "",
+        "group": "2738c935a6342b95",
+        "order": 5,
+        "width": 12,
+        "height": 7,
+        "gtype": "gage",
+        "title": "온도",
+        "label": "oC",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 810,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "a0d1b364e27a47ab",
+        "type": "function",
+        "z": "ac14a8b273914185",
+        "name": "",
+        "func": "var output = msg.payload.split(\",\");\nvar Temp = parseFloat(output[1]);\nvar msg = {payload:Temp};\nreturn [msg];",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 460,
+        "wires": [
+            [
+                "1e8aa20eba5d5f67",
+                "6cebccc716b4bd56"
+            ]
+        ]
+    },
+    {
+        "id": "1ff0621ae3348461",
+        "type": "ui_chart",
+        "z": "ac14a8b273914185",
+        "name": "",
+        "group": "2738c935a6342b95",
+        "order": 4,
+        "width": 17,
+        "height": 7,
+        "label": "chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 790,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6cebccc716b4bd56",
+        "type": "ui_chart",
+        "z": "ac14a8b273914185",
+        "name": "",
+        "group": "2738c935a6342b95",
+        "order": 6,
+        "width": 17,
+        "height": 7,
+        "label": "chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 820,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "adbe200a4813c143",
+        "type": "file",
+        "z": "ac14a8b273914185",
+        "name": "",
+        "filename": "D:/Data/Test.txt",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 610,
+        "y": 100,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "544eba7af786591d",
+        "type": "ui_spacer",
+        "z": "ac14a8b273914185",
+        "name": "spacer",
+        "group": "2738c935a6342b95",
+        "order": 2,
+        "width": 17,
+        "height": 1
+    },
+    {
+        "id": "2738c935a6342b95",
+        "type": "ui_group",
+        "name": "Group 1",
+        "tab": "fadef5634ec1892e",
+        "order": 1,
+        "disp": true,
+        "width": 29
+    },
+    {
+        "id": "0ea2fcaaccbfa388",
+        "type": "serial-port",
+        "serialport": "COM3",
+        "serialbaud": "9600",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "fadef5634ec1892e",
+        "type": "ui_tab",
+        "name": "Tab 3",
+        "icon": "dashboard",
+        "order": 3
+    }
+]
